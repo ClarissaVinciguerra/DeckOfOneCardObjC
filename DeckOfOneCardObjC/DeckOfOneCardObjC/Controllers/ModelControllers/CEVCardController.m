@@ -41,9 +41,16 @@ static NSString * const drawEndpoint = @"draw";
             return;
         }
         
-        CEVCard *card = [[CEVCard alloc] initWithDictionary:topLevelDictionary];
-        NSLog(@"Value %@ SUIT: %@ IMAGE %@", card.value, card.suit, card.imagePath);
-        completion(card);
+        NSArray *cardsArray = topLevelDictionary[@"cards"];
+        NSMutableArray *cardsDictArray = [NSMutableArray array];
+        for (NSDictionary *cardDictionary in cardsArray)
+        {
+            CEVCard *card = [[CEVCard alloc] initWithCardDictionary:cardDictionary];
+            NSLog(@"Value %@ SUIT: %@ IMAGE %@", card.value, card.suit, card.imagePath);
+            [cardsDictArray addObject:card];
+        }
+     CEVCard *cardToReturn = cardsDictArray.firstObject;
+        completion(cardToReturn);
         
     }] resume];
 }

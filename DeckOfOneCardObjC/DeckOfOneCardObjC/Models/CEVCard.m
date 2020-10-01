@@ -21,12 +21,13 @@
 @end
 
 @implementation CEVCard (JSONConvertable)
-- (CEVCard *)initWithDictionary:(NSDictionary<NSString *,id> *)topLevelDictionary
+// call the following for each card that comes back in the JSON's cardsArray
+- (CEVCard *)initWithCardDictionary:(NSDictionary<NSString *,id> *)cardDictionary
 {
     
-    NSString *value = topLevelDictionary[@"value"];
-    NSString *suit = topLevelDictionary[@"suit"];
-    NSString *imagePath = topLevelDictionary[@"image"];
+    NSString *value = cardDictionary[@"value"];
+    NSString *suit = cardDictionary[@"suit"];
+    NSString *imagePath = cardDictionary[@"image"];
     
     return [self initWithValue:value suit:suit imagePath:imagePath];
 }

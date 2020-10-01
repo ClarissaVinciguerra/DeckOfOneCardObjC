@@ -9,9 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CEVCard : NSObject
 
-@property (nonatomic, copy, readonly) NSArray *cards;
+@interface CEVCard : NSObject
 
 @property (nonatomic, copy, readonly) NSString *value;
 @property (nonatomic, copy, readonly) NSString *suit;
@@ -25,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CEVCard (JSONConvertable)
 
-- (CEVCard *)initWithDictionary:(NSDictionary<NSString *, id>*)topLevelDictionary;
+- (CEVCard *)initWithCardDictionary:(NSDictionary<NSString *, id>*)topLevelDictionary;
 
 @end
 
